@@ -8,7 +8,7 @@ import torch.optim as optim
 from torch.distributions.categorical import Categorical
 
 from model import CnnActorCriticNetwork, ICMModel
-
+from tqdm import trange
 
 class ICMAgent(object):
     def __init__(

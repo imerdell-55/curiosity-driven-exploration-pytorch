@@ -5,7 +5,7 @@ from config import *
 from torch.multiprocessing import Pipe
 
 from tensorboardX import SummaryWriter
-
+from tqdm import trange
 import numpy as np
 import copy
 
@@ -16,6 +16,8 @@ def main():
     env_id = default_config['EnvID']
     env_type = default_config['EnvType']
 
+
+    total_global_update = (np.int)(default_config['num_run'])
     if env_type == 'mario':
         env = JoypadSpace(gym_super_mario_bros.make(env_id), COMPLEX_MOVEMENT)
     elif env_type == 'atari':
@@ -137,7 +139,7 @@ def main():
     obs_rms.update(next_obs)
     print('End to initalize...')
 
-    while True:
+    for _ in trange(total_global_update):
         total_state, total_reward, total_done, total_next_state, total_action, total_int_reward, total_next_obs, total_values, total_policy = \
             [], [], [], [], [], [], [], [], []
         global_step += (num_worker * num_step)

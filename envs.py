@@ -193,9 +193,9 @@ class AtariEnvironment(Environment):
 
             if done:
                 self.recent_rlist.append(self.rall)
-                print("[Episode {}({})] Step: {}  Reward: {}  Recent Reward: {}  Visited Room: [{}]".format(
-                    self.episode, self.env_idx, self.steps, self.rall, np.mean(self.recent_rlist),
-                    info.get('episode', {}).get('visited_rooms', {})))
+                # print("[Episode {}({})] Step: {}  Reward: {}  Recent Reward: {}  Visited Room: [{}]".format(
+                #     self.episode, self.env_idx, self.steps, self.rall, np.mean(self.recent_rlist),
+                #     info.get('episode', {}).get('visited_rooms', {})))
 
                 self.history = self.reset()
 
